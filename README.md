@@ -70,7 +70,7 @@ head(mat)
 
 ref = read.delim("~/path/to/Ref/CNV_SIGNATURES_PROFILES.txt", stringsAsFactors = FALSE)
 colnames(ref) = paste0("CNV_SIG_", 1:5)
-rownames(ref) = colnames(hdp_final)[2:29]
+rownames(ref) = colnames(hdp_final)[1:28]
 
 all_cnv_sig = list()
 for (i in (1:nrow(mat))) {
@@ -87,4 +87,21 @@ for (i in (1:nrow(mat))) {
   all_cnv_sig[[i]] = c(rownames(mat)[i], alpha)
 }
 all_cnv_sig2 = do.call(rbind.data.frame, all_cnv_sig)
+colnames(all_cnv_sig2)=c("sampleID","cnv_1", "cnv_2","cnv_3","cnv_4","cnv5")
+head(all_cnv_sig2)
+    sampleID                  cnv_1                   cnv_2                                          cnv_3                                                cnv_4
+1 Sample_1        0.335283929467462       0.203043923823257                           0.000336715144549365                                    0.461251600184551
+2 Sample_2        0.000000011384105       0.918401555363961                              0.081567287810448                            0.00000000258155072279143
+3 Sample_3        0.733771322971865        0.10469798686401                              0.111483896666388                             0.0000000137108322323334
+4 Sample_4        0.345846603429298       0.555708035001017              0.0000000000000000000000000000017             0.00000000000000000000000000000000000055
+5 Sample_5        0.668700780461538       0.197194857817047                              0.132382300374327                                0.0000100081024799324
+6 Sample_6        0.922631021589264 0.000000856340114250046                     0.000000000000000000000031                                   0.0674956040640046
+                   cnv5
+1 0.0000838313801816059
+2 0.0000311428599350067
+3    0.0500467797869048
+4    0.0984453615696854
+5   0.00171205324460799
+6   0.00987251800661703
+
 ```

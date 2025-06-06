@@ -46,8 +46,6 @@ head(cnv_seg)
 #Sample_5     1 12834382  13367518     2     0        5
 #Sample_6     1 13367518  16546038     2     1        6
 
-
-
 mat=generate_cn_feature_matrix(
   segmentation_obj = cnv_seg,
   chrom_length_file = "~/path/to/Ref/chrom_sizes_hg38.txt",

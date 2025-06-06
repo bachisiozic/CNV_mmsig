@@ -38,13 +38,13 @@ cnv_seg=cnv_seg[order(cnv_mmrf_sel$sample, cnv_mmrf_sel$Chrom, cnv_mmrf_sel$star
 cnv_seg$Chrom=gsub("chr","", cnv_seg$Chrom)
 cnv_seg$code_row=1:nrow(cnv_seg)
 head(cnv_seg)
-#sample   Chrom    start       end major minor code_row
-#Sample_1     1   181508   1979102     2     1        1
-#Sample_2     1   791595 248946322     2    NA        2
-#Sample_3     1  1979102   1982826     3     0        3
-#Sample_4     1  1982826  12834382     2     1        4
-#Sample_5     1 12834382  13367518     2     0        5
-#Sample_6     1 13367518  16546038     2     1        6
+#   sample Chrom    start       end major minor code_row
+# Sample_1     1   181508   1979102     2     1        1
+# Sample_2     1   791595 248946322     2    NA        2
+# Sample_3     1  1979102   1982826     3     0        3
+# Sample_4     1  1982826  12834382     2     1        4
+# Sample_5     1 12834382  13367518     2     0        5
+# Sample_6     1 13367518  16546038     2     1        6
 
 mat=generate_cn_feature_matrix(
   segmentation_obj = cnv_seg,
@@ -52,20 +52,20 @@ mat=generate_cn_feature_matrix(
   cytoband_file = "~/path/to/Ref/cytoBand_hg38.txt"
 )
 head(mat)
-#         mb_10_1 mb_10_3 mb_10_4 count_cnv_1 count_cnv_2 count_cnv_3 count_cnv_4 count_cnv_5 jump_1 jump_2 jump_3 band_1 band_2 band_3 osci_1 osci_2 osci_3 osci_4
-#Sample_1      26       1       0           0           5          25          13           7     24      4      0     25      1      0     24      0      0      0
-#Sample_2       1       0       0           1           1          22           0           0      1      1      0     22      0      0     22      0      0      0
-#Sample_3      18       0       0           1           4          10          13           0      2      4      0     24      0      0     22      0      0      0
-#Sample_4       8       0       0           1           0          15           4           3      0      1      0     22      0      0     22      0      0      0
-#Sample_5      16       0       0           1           4          13          11           0      2      5      0     25      0      0     22      0      0      0
-#Sample_6      26       0       0           0           0          14          13           9      3      9      2     24      1      0     21      0      1      0
-#            size_cnv_1 size_cnv_2 size_cnv_3 size_cnv_4 size_cnv_5 size_cnv_6 size_cnv_7 size_cnv_8 size_cnv_9 size_cnv_10
-#Sample_1          0          1          5          3          4          7          6         12          5           7
-#Sample_2          1          0          1          0          0          2          2          6          4           8
-#Sample_3          0          0          1          0          3          5          2          6          4           7
-#Sample_4          0          0          1          0          0          2          2          6          4           8
-#Sample_5          0          0          2          0          4          4          2          7          4           6
-#Sample_6          1          0          0          5          6          3          3          6          6           6
+#          mb_10_1 mb_10_3 mb_10_4 count_cnv_1 count_cnv_2 count_cnv_3 count_cnv_4 count_cnv_5 jump_1 jump_2 jump_3 band_1 band_2 band_3 osci_1 osci_2 osci_3 osci_4
+# Sample_1      26       1       0           0           5          25          13           7     24      4      0     25      1      0     24      0      0      0
+# Sample_2       1       0       0           1           1          22           0           0      1      1      0     22      0      0     22      0      0      0
+# Sample_3      18       0       0           1           4          10          13           0      2      4      0     24      0      0     22      0      0      0
+# Sample_4       8       0       0           1           0          15           4           3      0      1      0     22      0      0     22      0      0      0
+# Sample_5      16       0       0           1           4          13          11           0      2      5      0     25      0      0     22      0      0      0
+# Sample_6      26       0       0           0           0          14          13           9      3      9      2     24      1      0     21      0      1      0
+#          size_cnv_1 size_cnv_2 size_cnv_3 size_cnv_4 size_cnv_5 size_cnv_6 size_cnv_7 size_cnv_8 size_cnv_9 size_cnv_10
+# Sample_1          0          1          5          3          4          7          6         12          5           7
+# Sample_2          1          0          1          0          0          2          2          6          4           8
+# Sample_3          0          0          1          0          3          5          2          6          4           7
+# Sample_4          0          0          1          0          0          2          2          6          4           8
+# Sample_5          0          0          2          0          4          4          2          7          4           6
+# Sample_6          1          0          0          5          6          3          3          6          6           6
 
 
 ref = read.delim("~/path/to/Ref/CNV_SIGNATURES_PROFILES.txt", stringsAsFactors = FALSE)
@@ -89,19 +89,19 @@ for (i in (1:nrow(mat))) {
 all_cnv_sig2 = do.call(rbind.data.frame, all_cnv_sig)
 colnames(all_cnv_sig2)=c("sampleID","cnv_1", "cnv_2","cnv_3","cnv_4","cnv5")
 head(all_cnv_sig2)
-    sampleID                  cnv_1                   cnv_2                                          cnv_3                                                cnv_4
-1 Sample_1        0.335283929467462       0.203043923823257                           0.000336715144549365                                    0.461251600184551
-2 Sample_2        0.000000011384105       0.918401555363961                              0.081567287810448                            0.00000000258155072279143
-3 Sample_3        0.733771322971865        0.10469798686401                              0.111483896666388                             0.0000000137108322323334
-4 Sample_4        0.345846603429298       0.555708035001017              0.0000000000000000000000000000017             0.00000000000000000000000000000000000055
-5 Sample_5        0.668700780461538       0.197194857817047                              0.132382300374327                                0.0000100081024799324
-6 Sample_6        0.922631021589264 0.000000856340114250046                     0.000000000000000000000031                                   0.0674956040640046
+# sampleID                    cnv_1                   cnv_2                                          cnv_3                                                cnv_4
+# Sample_1        0.335283929467462       0.203043923823257                           0.000336715144549365                                    0.461251600184551
+# Sample_2        0.000000011384105       0.918401555363961                              0.081567287810448                            0.00000000258155072279143
+# Sample_3        0.733771322971865        0.10469798686401                              0.111483896666388                             0.0000000137108322323334
+# Sample_4        0.345846603429298       0.555708035001017              0.0000000000000000000000000000017             0.00000000000000000000000000000000000055
+# Sample_5        0.668700780461538       0.197194857817047                              0.132382300374327                                0.0000100081024799324
+# Sample_6        0.922631021589264 0.000000856340114250046                     0.000000000000000000000031                                   0.0674956040640046
                    cnv5
-1 0.0000838313801816059
-2 0.0000311428599350067
-3    0.0500467797869048
-4    0.0984453615696854
-5   0.00171205324460799
-6   0.00987251800661703
+# 0.0000838313801816059
+# 0.0000311428599350067
+#    0.0500467797869048
+#    0.0984453615696854
+#   0.00171205324460799
+#   0.00987251800661703
 
 ```

@@ -70,7 +70,7 @@ head(mat)
 
 ref = read.delim("~/path/to/Ref/CNV_SIGNATURES_PROFILES.txt", stringsAsFactors = FALSE)
 colnames(ref) = paste0("CNV_SIG_", 1:5)
-rownames(ref) = colnames(hdp_final)[1:28]
+rownames(ref) = colnames(mat)[1:28]
 
 all_cnv_sig = list()
 for (i in (1:nrow(mat))) {

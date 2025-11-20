@@ -34,7 +34,7 @@ source("~/path/to/CNV_mmsig.R")
 
 cnv_seg=read.delim("~/path/to/your/cnv_seg.txt")
 colnames(cnv_seg)=c("sample","Chrom","start","end","major","minor")
-cnv_seg=cnv_seg[order(cnv_mmrf_sel$sample, cnv_mmrf_sel$Chrom, cnv_mmrf_sel$start),]
+cnv_seg=cnv_seg[order(cnv_seg$sample, cnv_seg$Chrom, cnv_seg$start),]
 cnv_seg$Chrom=gsub("chr","", cnv_seg$Chrom)
 cnv_seg$code_row=1:nrow(cnv_seg)
 head(cnv_seg)

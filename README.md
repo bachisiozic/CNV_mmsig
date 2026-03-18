@@ -1,7 +1,7 @@
 # CNV_mmsig
 
 Copy number variant signature fitting function. <p>
-**Genomics Define Malignant Transformation in Myeloma Precursor Conditions** Maura F., Bergsagel L., Ziccheddu B., Kumar S., et al.
+**Genomics Define Malignant Transformation in Myeloma Precursor Conditions.** Maura F., Bergsagel L., Ziccheddu B., Kumar S., et al.
 
 ---
 

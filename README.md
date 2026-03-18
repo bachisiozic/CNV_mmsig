@@ -1,6 +1,7 @@
 # CNV_mmsig
 
-Copy number variant signature fitting function for fitting based on “Copy number signatures predict chromothripsis and clinical outcomes in newly diagnosed multiple myeloma” by Maclachlan et al.
+Copy number variant signature fitting function. <p>
+"Genomics Define Malignant Transformation in Myeloma Precursor Conditions" Maura F., Bergsagel L., Ziccheddu B., Kumar S., et al.
 
 ---
 
@@ -33,12 +34,12 @@ library(dplyr)
 source("~/path/to/CNV_mmsig.R")
 
 cnv_seg=read.delim("~/path/to/your/cnv_seg.txt")
-colnames(cnv_seg)=c("sample","Chrom","start","end","major","minor")
+colnames(cnv_seg)=c("sample","Chrom","start","end","total","minor")
 cnv_seg=cnv_seg[order(cnv_seg$sample, cnv_seg$Chrom, cnv_seg$start),]
 cnv_seg$Chrom=gsub("chr","", cnv_seg$Chrom)
 cnv_seg$code_row=1:nrow(cnv_seg)
 head(cnv_seg)
-#   sample Chrom    start       end major minor code_row
+#   sample Chrom    start       end total minor code_row
 # Sample_1     1   181508   1979102     2     1        1
 # Sample_2     1   791595 248946322     2    NA        2
 # Sample_3     1  1979102   1982826     3     0        3
